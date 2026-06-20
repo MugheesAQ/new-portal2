@@ -1,0 +1,6 @@
+{
+  "name": "DESC Citizen Portal",
+  "description": "Enterprise-grade Citizen Portal platform for DESC Digital Innovation Center. Phase 1: Solution Architecture.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
