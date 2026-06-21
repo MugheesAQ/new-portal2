@@ -1,10 +1,10 @@
 # Stage 1: Build the React application
-FROM node:18-alpine AS builder
+FROM node:20-slim AS builder
 
 WORKDIR /app
 
 # Install dependencies first for cache layer optimization
-COPY package*.json ./
+COPY package.json ./
 RUN npm install
 
 # Copy the rest of the application code
