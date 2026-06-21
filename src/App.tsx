@@ -156,7 +156,7 @@ export default function App() {
           )}
           
           {user.role === 'officer' && (currentView === 'officer-dashboard' || currentView === 'dashboard') && (
-            <Dashboard complaints={filteredComplaints} onNavigate={(v) => setCurrentView('officer-cases')} userRole="officer" />
+            <Dashboard complaints={filteredComplaints} onNavigate={(v) => setCurrentView('officer-cases')} />
           )}
           {user.role === 'officer' && currentView === 'officer-cases' && (
             <OfficerCases complaints={filteredComplaints} onUpdateStatus={handleUpdateStatus} />
