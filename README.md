@@ -9,9 +9,9 @@ The application leverages a modular Single Page Application (SPA) architecture u
 - **Visual Layer**: Designed using **Tailwind CSS**, strictly adhering to utilitarian functional colors, precise sizing, and responsive grid layouts. The charts are powered by `recharts`, visualizing timeline dynamics seamlessly.
 - **Routing**: Employs an internal view-state router mapping explicit string tokens (e.g. `dashboard`, `citizen-tracker`) to conditional component renders, guaranteeing fast rendering without heavy browser history management overlays.
 
-## Containerization strategy (Projected)
-The UI simulates operating within a larger cloud-native containerized scope:
-- **Frontend Container**: Bound to an `nginx:alpine` image serving compiled static files.
+## Containerization & Deployment
+I have authored an official `Dockerfile` and `.dockerignore` for production-grade deployments. 
+- **Actual Frontend Container**: A multi-stage Docker build is configured. It uses `node:18-alpine` to cleanly build the Vite application and bundles it securely into an `nginx:alpine` image serving the compiled static assets over port `80`.
 - **Backend Mock Infrastructure**: The `SystemStatus.tsx` visualizes an ecosystem where requests from the frontend would hit a Node (`desc-api-gateway`), routed through a Go authentication mesh (`desc-auth-service`), backed by `postgres:15` and a `redis:7` caching layer.
 
 ## Security Details

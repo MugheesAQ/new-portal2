@@ -22,7 +22,7 @@ const MOCK_MONTHLY_DATA = [
  * @param complaints - External array of complaint parameters specific to user scopes.
  * @param onNavigate - Routing dispatcher navigating deep contexts upon interactions.
  */
-export default function Dashboard({ complaints, onNavigate }: { complaints: Complaint[], onNavigate: (v: ViewState) => void }) {
+export default function Dashboard({ complaints, onNavigate, userRole = 'citizen' }: { complaints: Complaint[], onNavigate: (v: ViewState) => void, userRole?: 'citizen' | 'officer' }) {
   const resolvedCount = complaints.filter(c => c.status === 'RESOLVED').length;
   const activeCount = complaints.filter(c => c.status !== 'RESOLVED').length;
 
@@ -70,33 +70,35 @@ export default function Dashboard({ complaints, onNavigate }: { complaints: Comp
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col h-[400px]">
-          <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50 rounded-t-2xl shrink-0">
-            <h2 className="font-bold text-slate-800 flex items-center gap-2">
-              <BarChart2 className="w-5 h-5 text-slate-400" />
-              Service Requests by Category
-            </h2>
+      <div className={`grid grid-cols-1 ${userRole === 'officer' ? 'lg:grid-cols-2' : ''} gap-6`}>
+        {userRole === 'officer' && (
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col h-[400px]">
+            <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50 rounded-t-2xl shrink-0">
+              <h2 className="font-bold text-slate-800 flex items-center gap-2">
+                <BarChart2 className="w-5 h-5 text-slate-400" />
+                Service Requests by Category
+              </h2>
+            </div>
+            <div className="flex-1 p-6">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={MOCK_MONTHLY_DATA} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
+                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748b' }} dy={10} />
+                  <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748b' }} />
+                  <Tooltip 
+                    contentStyle={{ borderRadius: '8px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                    cursor={{ fill: '#f1f5f9' }}
+                  />
+                  <Legend iconType="circle" wrapperStyle={{ fontSize: '12px', paddingTop: '20px' }} />
+                  <Bar dataKey="Infrastructure" stackId="a" fill="#0f172a" radius={[0, 0, 4, 4]} />
+                  <Bar dataKey="Healthcare" stackId="a" fill="#3b82f6" />
+                  <Bar dataKey="Education" stackId="a" fill="#eab308" />
+                  <Bar dataKey="Law & Order" stackId="a" fill="#10b981" radius={[4, 4, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </div>
-          <div className="flex-1 p-6">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={MOCK_MONTHLY_DATA} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748b' }} dy={10} />
-                <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#64748b' }} />
-                <Tooltip 
-                  contentStyle={{ borderRadius: '8px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
-                  cursor={{ fill: '#f1f5f9' }}
-                />
-                <Legend iconType="circle" wrapperStyle={{ fontSize: '12px', paddingTop: '20px' }} />
-                <Bar dataKey="Infrastructure" stackId="a" fill="#0f172a" radius={[0, 0, 4, 4]} />
-                <Bar dataKey="Healthcare" stackId="a" fill="#3b82f6" />
-                <Bar dataKey="Education" stackId="a" fill="#eab308" />
-                <Bar dataKey="Law & Order" stackId="a" fill="#10b981" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
+        )}
 
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col h-[400px]">
           <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50 rounded-t-2xl shrink-0">
