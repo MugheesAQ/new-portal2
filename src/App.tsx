@@ -8,6 +8,7 @@ import Tracking from './components/Tracking';
 import Profile from './components/Profile';
 import OfficerCases from './components/OfficerCases';
 import SystemStatus from './components/SystemStatus';
+import CitizenTracker from './components/CitizenTracker';
 import { User, Complaint, ViewState, UserRole, ComplaintStatus } from './types';
 
 // Mock initial data
@@ -162,6 +163,9 @@ export default function App() {
           )}
           {user.role === 'officer' && currentView === 'system-status' && (
             <SystemStatus />
+          )}
+          {user.role === 'officer' && currentView === 'citizen-tracker' && (
+            <CitizenTracker />
           )}
         </main>
       </div>

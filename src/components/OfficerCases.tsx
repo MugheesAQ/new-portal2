@@ -2,6 +2,13 @@ import { Complaint, ComplaintStatus } from '../types';
 import { Search, FileText, CheckCircle, XCircle, Clock, ShieldAlert } from 'lucide-react';
 import { useState } from 'react';
 
+/**
+ * Officer Cases Dashboard - Administrative review panel connecting government officials
+ * to incoming unresolved complaint tickets. Showcases comprehensive status management bindings and note-taking functionality.
+ * 
+ * @param complaints - Core complaint array serving as the unrolled queue dataset.
+ * @param onUpdateStatus - Callback triggered when an official modifies specific request attributes.
+ */
 export default function OfficerCases({ complaints, onUpdateStatus }: { complaints: Complaint[], onUpdateStatus: (id: string, status: ComplaintStatus, notes: string) => void }) {
   const [selectedCase, setSelectedCase] = useState<Complaint | null>(null);
   const [notes, setNotes] = useState('');
@@ -26,7 +33,7 @@ export default function OfficerCases({ complaints, onUpdateStatus }: { complaint
           <input 
             type="text" 
             placeholder="Search cases..." 
-            className="w-full pl-9 pr-4 py-2 border-slate-300 rounded-lg shadow-sm focus:border-[#00401A] focus:ring-[#00401A] sm:text-sm border outline-none font-medium"
+            className="w-full pl-9 pr-4 py-2 border-slate-300 rounded-lg shadow-sm focus:border-[#0f172a] focus:ring-[#0f172a] sm:text-sm border outline-none font-medium"
           />
         </div>
       </div>
@@ -45,7 +52,7 @@ export default function OfficerCases({ complaints, onUpdateStatus }: { complaint
                <button 
                   key={c.id} 
                   onClick={() => { setSelectedCase(c); setNotes(c.officerNotes || ''); }}
-                  className={`w-full text-left p-4 rounded-xl border transition-all ${selectedCase?.id === c.id ? 'bg-[#00401A] text-white border-[#00401A] shadow-md' : 'bg-white border-slate-100 hover:border-slate-300 hover:bg-slate-50'}`}
+                  className={`w-full text-left p-4 rounded-xl border transition-all ${selectedCase?.id === c.id ? 'bg-[#0f172a] text-white border-[#0f172a] shadow-md' : 'bg-white border-slate-100 hover:border-slate-300 hover:bg-slate-50'}`}
                 >
                   <div className="flex justify-between items-center mb-2">
                     <span className={`text-xs font-mono font-bold ${selectedCase?.id === c.id ? 'text-slate-300' : 'text-slate-700'}`}>{c.id}</span>
@@ -94,7 +101,7 @@ export default function OfficerCases({ complaints, onUpdateStatus }: { complaint
                      value={notes}
                      onChange={e => setNotes(e.target.value)}
                      placeholder="Enter resolution notes or reason for rejection/escalation..."
-                     className="w-full border-slate-300 rounded-lg shadow-sm focus:border-[#00401A] focus:ring-[#00401A] sm:text-sm py-3 px-3 border outline-none font-medium text-slate-700"
+                     className="w-full border-slate-300 rounded-lg shadow-sm focus:border-[#0f172a] focus:ring-[#0f172a] sm:text-sm py-3 px-3 border outline-none font-medium text-slate-700"
                    />
                    
                    <div className="flex flex-wrap gap-3 pt-2 border-t border-slate-100">
@@ -104,7 +111,7 @@ export default function OfficerCases({ complaints, onUpdateStatus }: { complaint
                         </button>
                       )}
                       
-                      <button onClick={() => handleStatusUpdate('RESOLVED')} className="flex items-center gap-2 bg-[#00401A] text-white hover:bg-[#002b12] px-4 py-2 rounded-lg font-bold text-sm transition-colors shadow-sm">
+                      <button onClick={() => handleStatusUpdate('RESOLVED')} className="flex items-center gap-2 bg-[#0f172a] text-[#eab308] hover:bg-black px-4 py-2 rounded-sm font-bold text-sm transition-colors shadow-sm">
                         <CheckCircle className="w-4 h-4" /> Approve & Resolve
                       </button>
                       

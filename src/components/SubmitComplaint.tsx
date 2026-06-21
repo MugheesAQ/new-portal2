@@ -31,7 +31,7 @@ export default function SubmitComplaint({ onSubmit }: { onSubmit: (c: Partial<Co
       <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
         <div className="p-6 border-b border-slate-100 bg-slate-50/50">
           <h2 className="text-xl font-bold tracking-tight text-slate-800 flex items-center gap-2">
-            <FilePlus className="w-5 h-5 text-[#00401A]" />
+            <FilePlus className="w-5 h-5 text-[#0f172a]" />
             New Complaint (E-Sikayat)
           </h2>
           <p className="text-sm text-slate-500 mt-1">
@@ -45,7 +45,7 @@ export default function SubmitComplaint({ onSubmit }: { onSubmit: (c: Partial<Co
             <select 
               value={category}
               onChange={e => setCategory(e.target.value)}
-              className="w-full border-slate-300 rounded-lg shadow-sm focus:border-[#00401A] focus:ring-[#00401A] sm:text-sm py-2.5 px-3 border bg-white outline-none"
+              className="w-full border-slate-300 rounded-lg shadow-sm focus:border-[#0f172a] focus:ring-[#0f172a] sm:text-sm py-2.5 px-3 border bg-white outline-none"
             >
               {CATEGORIES.map(cat => (
                 <option key={cat} value={cat}>{cat}</option>
@@ -61,7 +61,7 @@ export default function SubmitComplaint({ onSubmit }: { onSubmit: (c: Partial<Co
               value={headline}
               onChange={e => setHeadline(e.target.value)}
               placeholder="Brief summary of the issue"
-              className="w-full border-slate-300 rounded-lg shadow-sm focus:border-[#00401A] focus:ring-[#00401A] sm:text-sm py-2.5 px-3 border outline-none font-medium"
+              className="w-full border-slate-300 rounded-lg shadow-sm focus:border-[#0f172a] focus:ring-[#0f172a] sm:text-sm py-2.5 px-3 border outline-none font-medium"
             />
           </div>
 
@@ -73,7 +73,7 @@ export default function SubmitComplaint({ onSubmit }: { onSubmit: (c: Partial<Co
               value={description}
               onChange={e => setDescription(e.target.value)}
               placeholder="Provide all relevant details, location, and dates..."
-              className="w-full border-slate-300 rounded-lg shadow-sm focus:border-[#00401A] focus:ring-[#00401A] sm:text-sm py-3 px-3 border outline-none"
+              className="w-full border-slate-300 rounded-lg shadow-sm focus:border-[#0f172a] focus:ring-[#0f172a] sm:text-sm py-3 px-3 border outline-none"
             />
           </div>
 
@@ -92,7 +92,7 @@ export default function SubmitComplaint({ onSubmit }: { onSubmit: (c: Partial<Co
           <div className="pt-2 flex justify-end">
             <button 
               type="submit"
-              className="flex items-center gap-2 bg-[#00401A] text-white px-6 py-2.5 rounded-lg font-bold hover:bg-[#002b12] focus:ring-4 focus:ring-[#00401A]/20 transition-all shadow-sm"
+              className="flex items-center gap-2 bg-[#0f172a] text-[#eab308] px-6 py-2.5 rounded-sm font-bold hover:bg-black focus:ring-4 focus:ring-[#0f172a]/20 transition-all shadow-sm"
             >
               <Send className="w-4 h-4" />
               Submit securely

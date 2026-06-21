@@ -6,7 +6,7 @@ export default function Header({ user }: { user: User }) {
   return (
     <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 z-10 shrink-0">
       <div className="flex items-center gap-4">
-        <div className="w-10 h-10 bg-[#00401A] rounded-lg flex items-center justify-center shrink-0 shadow-sm">
+        <div className="w-10 h-10 bg-[#0f172a] rounded-lg flex items-center justify-center shrink-0 shadow-sm">
           <Landmark className="text-white w-6 h-6" />
         </div>
         <div>

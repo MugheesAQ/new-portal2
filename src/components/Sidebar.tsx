@@ -1,4 +1,4 @@
-import { LayoutDashboard, FilePlus, FileText, LogOut, User as UserIcon, ShieldAlert, Server } from 'lucide-react';
+import { LayoutDashboard, FilePlus, FileText, LogOut, User as UserIcon, ShieldAlert, Server, Activity } from 'lucide-react';
 import { ViewState, UserRole } from '../types';
 
 export default function Sidebar({ 
@@ -22,6 +22,7 @@ export default function Sidebar({
   const officerItems = [
     { id: 'officer-dashboard', label: 'Official Reporting', icon: LayoutDashboard },
     { id: 'officer-cases', label: 'Department Cases', icon: ShieldAlert },
+    { id: 'citizen-tracker', label: 'Citizen Activity', icon: Activity },
     { id: 'system-status', label: 'System Health', icon: Server },
     { id: 'profile', label: 'My Profile', icon: UserIcon },
   ];
@@ -29,7 +30,7 @@ export default function Sidebar({
   const navItems = role === 'officer' ? officerItems : citizenItems;
 
   return (
-    <nav className="w-64 bg-[#00401A] flex flex-col py-6 px-4 shrink-0 h-full shadow-xl">
+    <nav className="w-64 bg-[#0f172a] flex flex-col py-6 px-4 shrink-0 h-full shadow-xl">
       <div className="space-y-1 mb-8">
         <p className="px-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4">
           {role === 'officer' ? 'Department Panel' : 'Services'}
@@ -47,7 +48,7 @@ export default function Sidebar({
                   : 'text-slate-400 hover:text-white hover:bg-white/5'
               }`}
             >
-              {active && <span className="w-1.5 h-1.5 rounded-full bg-white absolute left-2"></span>}
+              {active && <span className="w-1.5 h-1.5 rounded-full bg-[#eab308] absolute left-2"></span>}
               <Icon className="w-5 h-5" />
               {item.label}
             </button>

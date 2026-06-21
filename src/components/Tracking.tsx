@@ -14,7 +14,7 @@ export default function Tracking({ complaints }: { complaints: Complaint[] }) {
           <input 
             type="text" 
             placeholder="Search by ID or keyword..." 
-            className="w-full pl-9 pr-4 py-2 border-slate-300 rounded-lg shadow-sm focus:border-[#00401A] focus:ring-[#00401A] sm:text-sm border outline-none font-medium"
+            className="w-full pl-9 pr-4 py-2 border-slate-300 rounded-lg shadow-sm focus:border-[#0f172a] focus:ring-[#0f172a] sm:text-sm border outline-none font-medium"
           />
         </div>
       </div>
