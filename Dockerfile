@@ -3,12 +3,12 @@ FROM node:20-slim AS builder
 
 WORKDIR /app
 
-# Copy the package files
-COPY package*.json ./
+# Only copy package.json (NOT package-lock.json) to force a fresh resolution 
+# for the Linux container architecture, bypassing the npm bug with optional native dependencies (@tailwindcss/oxide).
+COPY package.json ./
 
-# Install dependencies with optional bindings (works around npm bug #4828)
-# We remove package-lock.json if copied from host to prevent cross-platform OS optional dependency mismatch
-RUN rm -f package-lock.json && npm install
+# Install dependencies freshly for the Linux container
+RUN npm install
 
 # Copy the rest of the application code
 COPY . .
